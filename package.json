@@ -1,0 +1,13 @@
+{
+  "name": "fontinova",
+  "version": "1.0.0",
+  "description": "Template HTML moderno con Tailwind CSS",
+  "main": "js/script.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./css/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./css/styles.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
