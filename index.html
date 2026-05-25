@@ -1,49 +1,495 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Proyecto base con Tailwind CSS listo para comenzar.">
-  <title>Mi Proyecto Tailwind</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind compiled styles -->
-  <link rel="stylesheet" href="css/styles.css">
+
+<html class="scroll-smooth" lang="es" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fontinova Expert - Manual de Marca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&amp;family=Montserrat:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#2F3655", // azul-profundo
+                        "secondary": "#AD6562", // terracota-rosado
+                        "background": "#FDF3E7", // old-lace
+                        "surface": "#EFDBC1", // indian-white
+                        
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#2F3655", // azul-profundo for high contrast
+                        "on-surface": "#2F3655", // azul-profundo for high contrast
+
+                        "surface-container": "#FDF3E7",
+                        "surface-container-low": "#EFDBC1",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c6c5ce",
+                        "tertiary-fixed-dim": "#b4c9de",
+                        "secondary-container": "#fda8a4",
+                        "on-secondary-container": "#783a39",
+                        "primary-container": "#2f3655",
+                        "on-primary-container": "#989fc4",
+                        "tertiary": "#0f2434",
+                        "surface-bright": "#FDF3E7",
+                        "on-tertiary-container": "#8fa4b8",
+                        "tertiary-fixed": "#cfe5fb",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Montserrat"],
+                        "headline-lg": ["Bricolage Grotesque"],
+                        "headline-xl": ["Bricolage Grotesque"],
+                        "headline-md": ["Bricolage Grotesque"],
+                        "body-sm": ["Montserrat"],
+                        "body-md": ["Montserrat"],
+                        "body-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between">
-
-  <header class="py-6 px-8 border-b border-slate-900">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <div class="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-        Proyecto Tailwinddd
-      </div>
-      <nav>
-        <a href="https://tailwindcss.com/docs" target="_blank" rel="noopener" class="text-sm text-slate-400 hover:text-slate-200 transition-colors">
-          Documentación
-        </a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="flex-grow flex items-center justify-center p-6">
-    <div class="text-center max-w-lg">
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Listo para Desarrollar
-      </h1>
-      <p class="text-slate-400 text-lg mb-8">
-        Tu estructura de carpetas está configurada con Tailwind CSS CLI. Comienza a editar <code class="bg-slate-900 px-2 py-1 rounded text-pink-400 text-sm">index.html</code> para ver los cambios.
-      </p>
-    </div>
-  </main>
-
-  <footer class="py-6 border-t border-slate-900 text-center text-sm text-slate-500">
-    &copy; <span id="year"></span> Proyecto Tailwind. Todos los derechos reservados.
-  </footer>
-
-  <script src="js/script.js"></script>
-</body>
-</html>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-background/70 backdrop-blur-md border-b border-outline-variant/30">
+<div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<img alt="Fontinova Expert Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdThVYpt__Q1G7cvyTtPMw9pxGAEbQkgoXK4dSLNK7yqU2prNIU9h98vgTrbqUU9ifhsx7ZlrKHZjIMx5eBenSaKmt7s210UdgBoK25hh64zsP9bwzxDY_g7DTBfpqshL4ZK6cWnkJ27jhQ7htybNTtLmer5NOGGV7NAuUPbippEcoXW8daSTFOKZp-4HH2qF-F5i8bPmd8Tk1e4ChkBbgyrKh2dbU2NDp2HEp7xloI6vOT_UxHxbODiXMMf7B8sDo8JupdzfRgVs"/>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-secondary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#inicio">Inicio</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#plataforma">Plataforma de Marca</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#identidad-visual">Identidad Visual</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#identidad-verbal">Identidad Verbal</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#aplicaciones">Aplicaciones</a>
+</div>
+<button class="hidden md:block bg-secondary text-on-secondary font-label-md text-label-md py-3 px-6 rounded-full hover:bg-primary hover:text-on-primary transition-colors shadow-sm">
+                Descargar Manual
+            </button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- HERO SECTION -->
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden" id="inicio">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-background/60 to-background z-10"></div>
+<div class="w-full h-full bg-surface" data-alt="Modern living room interior" style='background-image: url("https://lh3.googleusercontent.com/aida/ADBb0ug1LDZP1WXPAa5JvZcRCwBGTWNvDa8glUG_ZpSYD7Cj9PwT4vlqpZzk2GGpTeg88HNxQQVUAOi5sKXrv8tVZO8q1JbnEMYR9QrVbp-3owMLbFfTK9jeJVe3n8K4WqzfKGFHttppsW05hnppsg5Up8xfYkHzsWVVIe9pnQa3nQOLBVIa2BlPPa6vYIBLi6C2d_0wyMSJ9JvYmXkXjSBPHFSzsFFbwcujjH_gTRyCepUb5x3Wbz8UI3sXNz8"); background-size: cover; background-position: center center;'></div>
+</div>
+<div class="relative z-20 text-center px-gutter max-w-4xl mx-auto mt-20 reveal active">
+<span class="inline-block py-1 px-4 rounded-full bg-secondary text-on-secondary font-label-md text-label-md mb-6 backdrop-blur-sm border border-secondary/20 shadow-md">La esencia del hogar</span>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-6 drop-shadow-sm">Transforma tu espacio, vive tu hogar.</h1>
+<p class="font-body-lg text-body-lg text-primary max-w-2xl mx-auto mb-10 font-semibold bg-background/50 p-4 rounded-xl backdrop-blur-sm">Donde la experticia corporativa se encuentra con la calidez de lo orgánico para crear ambientes que respiran tranquilidad y estilo. En Fontinova Expert, diseñamos experiencias habitables que reflejan tu esencia.</p>
+<a class="inline-flex items-center justify-center gap-2 bg-primary text-on-primary font-label-md text-label-md py-4 px-8 rounded-full hover:bg-secondary transition-colors shadow-[0_8px_24px_-4px_rgba(47,54,85,0.25)]" href="#plataforma">
+                Descubrir Marca
+                <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>arrow_downward</span>
+</a>
+</div>
+</section>
+<!-- PLATAFORMA DE MARCA -->
+<section class="py-24 px-gutter bg-background" id="plataforma">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-16 reveal active">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Plataforma de Marca</h2>
+<p class="font-body-md text-body-md text-primary max-w-2xl mx-auto opacity-90">Los cimientos sobre los que construimos la experiencia y hacia donde nos dirigimos.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+<div class="bg-surface rounded-lg p-10 border border-secondary/20 shadow-sm reveal active">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary">star</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Propuesta de Valor</h3>
+<p class="font-body-md text-body-md text-primary opacity-90">Acompañamos al cliente en la renovación de su espacio ideal, ofreciendo productos de calidad y asesoría cercana y continua.</p>
+</div>
+<div class="bg-surface rounded-lg p-10 border border-secondary/20 shadow-sm reveal active" style="transition-delay: 100ms;">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-secondary">rocket_launch</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Misión</h3>
+<p class="font-body-md text-body-md text-primary opacity-90">Ser el lugar donde se encuentren productos a medida, asesoría personalizada y acompañamiento técnico.</p>
+</div>
+<div class="bg-surface rounded-lg p-10 border border-secondary/20 shadow-sm reveal active" style="transition-delay: 200ms;">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary">visibility</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Visión</h3>
+<p class="font-body-md text-body-md text-primary opacity-90">Ser la tienda líder en Fontibón en asesoría y renovación de cortinas.</p>
+</div>
+</div>
+<div class="bg-surface rounded-xl p-12 relative overflow-hidden reveal border border-primary/10 shadow-md active">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+<h3 class="font-headline-md text-headline-md text-primary mb-8 text-center relative z-10">Nuestros Valores</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+<!-- Value Card 1 -->
+<div class="group bg-background p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-primary/10 hover:border-secondary cursor-pointer rounded-3xl">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4 group-hover:scale-110 transition-transform">verified_user</span>
+<h4 class="font-label-md text-label-md text-primary mb-2">Confiabilidad</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">Expertise técnico y resultados consistentes en cada proyecto. Nuestra palabra es nuestra garantía.</p>
+</div>
+<!-- Value Card 2 -->
+<div class="group bg-background p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-primary/10 hover:border-secondary cursor-pointer rounded-3xl">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4 group-hover:scale-110 transition-transform">handshake</span>
+<h4 class="font-label-md text-label-md text-primary mb-2">Compromiso</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">Dedicación total a la visión y satisfacción de nuestros clientes. Acompañamiento en cada etapa.</p>
+</div>
+<!-- Value Card 3 -->
+<div class="group bg-background p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-primary/10 hover:border-secondary cursor-pointer rounded-3xl">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4 group-hover:scale-110 transition-transform">eco</span>
+<h4 class="font-label-md text-label-md text-primary mb-2">Responsabilidad</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">Prácticas sostenibles y cuidado genuino por el entorno y la comunidad en la que operamos.</p>
+</div>
+</div>
+<div class="mt-12 text-center relative z-10">
+<span class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md text-label-md shadow-md">
+<span class="material-symbols-outlined text-on-primary">psychology</span>
+                        Arquetipo: El Cuidador
+                    </span>
+</div>
+</div>
+</div>
+</section>
+<!-- IDENTIDAD VISUAL -->
+<section class="py-24 px-gutter bg-surface" id="identidad-visual">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16 reveal active">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Identidad Visual</h2>
+<div class="h-1 w-20 bg-secondary rounded-full"></div>
+</div>
+<!-- Desglose Imagotipo -->
+<div class="mb-20 reveal active">
+<h3 class="font-headline-md text-headline-md text-primary mb-8">El Imagotipo</h3>
+<div class="bg-background rounded-xl p-8 border border-primary/10 flex flex-col md:flex-row items-center gap-12">
+<div class="w-full md:w-1/2 flex justify-center bg-surface p-8 rounded-lg">
+<img alt="Fontinova Expert Logo" class="w-full max-w-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdThVYpt__Q1G7cvyTtPMw9pxGAEbQkgoXK4dSLNK7yqU2prNIU9h98vgTrbqUU9ifhsx7ZlrKHZjIMx5eBenSaKmt7s210UdgBoK25hh64zsP9bwzxDY_g7DTBfpqshL4ZK6cWnkJ27jhQ7htybNTtLmer5NOGGV7NAuUPbippEcoXW8daSTFOKZp-4HH2qF-F5i8bPmd8Tk1e4ChkBbgyrKh2dbU2NDp2HEp7xloI6vOT_UxHxbODiXMMf7B8sDo8JupdzfRgVs"/>
+</div>
+<div class="w-full md:w-1/2 space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">home</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">Estructura del hogar (Líneas rectas de un techo / estabilidad)</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">Las líneas firmes y la estructura sólida del ícono representan la confiabilidad y la seguridad del hogar.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">water_drop</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">Movimiento de la tela (Ondas simulando cortinas / fluidez)</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">Los elementos curvos sugieren el movimiento de las telas y la adaptabilidad de nuestras soluciones a cada espacio.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">favorite</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">Cercanía (Formas curvas intencionales / empatía)</h4>
+<p class="font-body-sm text-body-sm text-primary opacity-80">La combinación de formas suaves transmite nuestra cercanía y preocupación genuina por el bienestar del cliente.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Paleta de Color -->
+<div class="mb-20 reveal active">
+<h3 class="font-headline-md text-headline-md text-primary mb-8">Paleta de Color</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="overflow-hidden shadow-md border border-primary/10 rounded-xl">
+<div class="h-32 bg-[#2F3655]"></div>
+<div class="bg-background p-4">
+<p class="font-label-md text-label-md text-primary">Azul Profundo</p>
+<p class="font-body-sm text-body-sm text-primary opacity-70 uppercase text-xs mt-1">#2F3655</p>
+</div>
+</div>
+<div class="overflow-hidden shadow-md border border-primary/10 rounded-xl">
+<div class="h-32 bg-[#AD6562]"></div>
+<div class="bg-background p-4">
+<p class="font-label-md text-label-md text-primary">Terracota Rosado</p>
+<p class="font-body-sm text-body-sm text-primary opacity-70 uppercase text-xs mt-1">#AD6562</p>
+</div>
+</div>
+<div class="overflow-hidden shadow-md border border-primary/10 rounded-xl">
+<div class="h-32 bg-[#FDF3E7]"></div>
+<div class="bg-background p-4">
+<p class="font-label-md text-label-md text-primary">Old Lace</p>
+<p class="font-body-sm text-body-sm text-primary opacity-70 uppercase text-xs mt-1">#FDF3E7</p>
+</div>
+</div>
+<div class="overflow-hidden shadow-md border border-primary/10 rounded-xl">
+<div class="h-32 bg-[#EFDBC1]"></div>
+<div class="bg-background p-4">
+<p class="font-label-md text-label-md text-primary">Indian White</p>
+<p class="font-body-sm text-body-sm text-primary opacity-70 uppercase text-xs mt-1">#EFDBC1</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tipografía -->
+<div class="mb-20 reveal active">
+<h3 class="font-headline-md text-headline-md text-primary mb-8">Tipografía</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-background rounded-lg p-8 border border-primary/10 shadow-sm flex flex-col justify-between">
+<div>
+<p class="font-label-md text-label-md text-secondary mb-2 tracking-widest">TÍTULOS </p>
+<p class="font-headline-xl text-headline-xl text-primary mb-4">Bricolage Grotesque</p>
+</div>
+<div class="text-primary text-4xl truncate opacity-80">
+                            Aa Bb Cc Dd Ee Ff Gg
+                        </div>
+</div>
+<div class="bg-background rounded-lg p-8 border border-primary/10 shadow-sm flex flex-col justify-between">
+<div>
+<p class="font-label-md text-label-md text-secondary mb-2 tracking-widest">CUERPO </p>
+<p class="font-headline-xl text-headline-xl text-primary mb-4 font-body-lg" style="font-family: Montserrat, sans-serif;">Montserrat</p>
+</div>
+<div class="text-primary text-2xl truncate font-body-md opacity-80" style="font-family: Montserrat, sans-serif;">
+                            Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- IDENTIDAD VERBAL Y SENSORIAL -->
+<section class="py-24 px-gutter bg-background" id="identidad-verbal">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16 reveal active">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Identidad Verbal y Sensorial</h2>
+<div class="h-1 w-20 bg-secondary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- Naming -->
+<div class="md:col-span-7 reveal flex flex-col active">
+<div class="bg-surface p-8 rounded-2xl border border-primary/10 shadow-sm h-full flex flex-col justify-center"><h3 class="font-headline-md text-headline-md text-primary mb-10 text-center md:text-left">Estructura de la Marca: Fontinova Expert</h3>
+<div class="flex flex-col gap-8">
+<!-- Breakdown Container -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 relative items-stretch"><!-- FONTI -->
+<div class="flex-1 w-full text-center group flex flex-col items-center justify-start h-full">
+<div class="w-full bg-primary text-on-primary py-4 px-6 rounded-full font-headline-md shadow-lg mb-4 transform transition-transform group-hover:scale-105 flex items-center justify-center min-h-[64px]">
+                FONTI
+            </div>
+<p class="font-body-sm text-primary font-semibold">Raíz, origen, fuente de inspiración.</p>
+<p class="text-xs text-secondary mt-1">(Derivado de Fontibón)</p>
+</div>
+<!-- Plus Sign -->
+<div class="flex items-center justify-center py-4">
+<span class="material-symbols-outlined text-secondary font-bold text-2xl">add</span>
+</div>
+<!-- NOVA -->
+<div class="flex-1 w-full text-center group flex flex-col items-center justify-start h-full">
+<div class="w-full bg-secondary text-on-secondary py-4 px-6 rounded-full font-headline-md shadow-lg mb-4 transform transition-transform group-hover:scale-105 flex items-center justify-center min-h-[64px]">
+                NOVA
+            </div>
+<p class="font-body-sm text-primary font-semibold">Novedad, innovación, renovación.</p>
+<p class="text-xs text-secondary mt-1">(Del espacio)</p>
+</div>
+<!-- Plus Sign -->
+<div class="flex items-center justify-center py-4">
+<span class="material-symbols-outlined text-secondary font-bold text-2xl">add</span>
+</div>
+<!-- EXPERT -->
+<div class="flex-1 w-full text-center group flex flex-col items-center justify-start h-full">
+<div class="w-full bg-primary text-on-primary py-4 px-6 rounded-full font-headline-md shadow-lg mb-4 transform transition-transform group-hover:scale-105 flex items-center justify-center min-h-[64px]">
+                EXPERT
+            </div>
+<p class="font-body-sm text-primary font-semibold">Autoridad y profesionalismo.</p>
+<p class="text-xs text-secondary mt-1">(Garantía de calidad)</p>
+</div></div>
+<!-- Summary -->
+<div class="mt-8 pt-8 border-t border-primary/10">
+<p class="font-body-md text-primary text-center italic">
+            "Una marca que une la pertenencia local con la vanguardia técnica para transformar hogares."
+        </p>
+</div>
+</div></div>
+</div>
+<!-- Voz y Tono -->
+<div class="md:col-span-5 reveal flex flex-col active" style="transition-delay: 100ms;">
+<div class="bg-primary p-8 rounded-2xl border border-primary/10 shadow-sm h-full flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-6">Voz y Tono</h3>
+<div class="space-y-4">
+<p class="font-body-md text-on-primary/90"><strong class="font-label-md text-surface">La Voz:</strong> Profesional, cálida, inspiradora y experta.</p>
+<p class="font-body-md text-on-primary/90"><strong class="font-label-md text-surface">El Tono:</strong> Cercano pero respetuoso. Evitamos el lenguaje excesivamente técnico a menos que sea necesario para demostrar nuestra experiencia, priorizando siempre la claridad y la conexión emocional con el hogar.</p>
+</div>
+</div>
+</div>
+<!-- Vocabulario de Marca -->
+<div class="md:col-span-8 reveal active" style="transition-delay: 200ms;">
+<div class="bg-surface rounded-2xl overflow-hidden border border-primary/10 shadow-sm h-full">
+<h3 class="font-headline-md text-headline-md text-primary p-8 pb-4">Vocabulario de Marca</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2">
+<div class="p-8 pt-0 sm:border-r border-primary/10">
+<h4 class="font-label-md text-label-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-green-600">check_circle</span> Sí usamos</h4>
+<ul class="space-y-2 font-body-sm text-primary opacity-90 list-disc list-inside">
+<li class="">Ayudar</li>
+<li class="">Calidad</li>
+<li class="">Comodidad</li>
+<li class="">Tranquilidad</li>
+<li class="">Armonía</li>
+<li class="">Bienestar</li>
+</ul>
+</div>
+<div class="p-8 pt-0">
+<h4 class="font-label-md text-label-md text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-red-600">cancel</span> Nunca usamos</h4>
+<ul class="space-y-2 font-body-sm text-primary opacity-90 list-disc list-inside">
+<li class="">"No se puede"</li>
+<li class="">"Hay problemas"</li>
+<li class="">"Es difícil"</li>
+<li class="">"Tenemos un contratiempo"</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Experiencia Sensorial -->
+<div class="md:col-span-4 reveal active" style="transition-delay: 300ms;">
+<div class="bg-secondary p-8 rounded-2xl border border-primary/10 shadow-sm h-full text-on-secondary flex flex-col justify-center gap-8">
+<h3 class="font-headline-md text-headline-md mb-2">Experiencia Sensorial</h3>
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-2xl">volume_up</span>
+<h4 class="font-label-md text-label-md font-bold">Sonidos en tienda</h4>
+</div>
+<p class="font-body-sm opacity-90">Viento pasando entre la tela, música de ambiente/naturaleza: Ambiental, Indie folk, Lofi/Chillhop.</p>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-2xl">record_voice_over</span>
+<h4 class="font-label-md text-label-md font-bold">Voz de marca</h4>
+</div>
+<p class="font-body-sm opacity-90">Timbre femenino claro, nítido y natural (conversación cara a cara).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- APLICACIONES / GALERÍA -->
+<section class="py-24 px-gutter bg-surface" id="aplicaciones">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16 reveal text-center active">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Aplicaciones y Galería</h2>
+<p class="font-body-md text-body-md text-primary opacity-90 max-w-2xl mx-auto">La marca Fontinova Expert en su entorno natural.</p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 reveal active auto-rows-fr">
+<!-- Item 1 -->
+<div class="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden shadow-md group relative h-fit"><img alt="Modern luxury curtains" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1w3C2K9aUjQAxxTkSJdMVBq7vZoRm4JsslYN47GN2PIZ8iJUvNeocbWS_GVJ6QOgkF05fFScEG1_YTWTal_cuuR_K3S5t1sf3OtHAeKb1QBjsUeLR1xpFW-s2RYi6fXxaophuwdez8-9Z6ULy32-zAFjY78BJoIvdzsIkhJ6Tp3mQZ4UbNnrlMIe1lktjetDKsheTnSklbQrPmMWZQ09aQEJyE7q3eXoQLDHfYh3Erpl0YHDoY2eLQYIN0DbN7enqmS_akzbcMDjRYw"/><div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"><p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Papelería</p></div></div>
+<!-- Item 2 -->
+<div class="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="High-quality textile textures" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDh9-WyZSyg8OCCDVQLO4aJOCDiUgE-9XBRqqKVmLUY22psflvS7ldwRtsbcypPxT_8d7_ZI7C2nejOouV_pJPHnZP8pd-qegd-CvsLPtjX9hJi_6oXS9D_0GFzjJpLJIMC5ZojjNQ5tCWJrZQiwtprZyN6ptioLEj1HNIV93FXrZ8ToGxFcz0U-NTse1FQqFxwsSyirECRIZr4tBTBRSW2V0KM-2rhPbkJ0jJ8NzaPkYTd_-9OwnPFI1He78V7v4kD3Vcd0LhUWDEuxQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Indumentaría</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="Modern home office with roller blinds" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPPeOHAdpRzVb7WrgDq-NZeZarhaZ9tZ-GFxoWz1bUHMrguB-maQZ18DdOAkv_ktESie1pkeC-rAfLQGK1gtvM8UXwaiZCmaZxyNKmhoT2nICzHwlJxMiy2mP3cQSLm6qzFe-SSW10zkv22gvBgX2VTcWD5Z657w60JhsRVO6kgHA_V82sb3ybb5VskpFmyhkKxA6dVUh6WxljCudz-H0bo4K42awDSlQs2SAhg3ABW2BOLVU2AFj76e2EHPYRSUJ8GQfEuQ6d4h1U_w"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Empaques</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="Interior design detail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5awgNFAjF6VMRXGdR-Ipvi2OzbPi9vgJe-8ZrlITXcmHw2LgFReDDi3sZiYvKOoCNxUITzHvTUXvT7nR4-U3wznRNM_S-3Ne-N_P1PzYnBT4w6zxxG2ClLacm3Gmk_29tQeO5DxFFVbwnvEmfzx_I7vnNFOHzyAxRJ4kqDskuTvpn80RuPs_xqHTc4Oz0gt2lGq3mSz7KUMAJGYaxLn6RpHZ0_8wnagW1ACiaSERyvw1YsUsf8muLRfdGO0EWZwXopm1UjyHEAUoW-Q"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Indumentaría</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="md:col-span-2 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="Cozy bedroom setting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKmIUMKUu7POK7GrC5H_hl8yUJuXI5Syrma0o9Y-Eft6j4d6X42ncBEBMjKqscm57nWH5CckEVhvhbPGmwcz3TqFJOdydvSOYAPDc9TkuR8D9Eb72WqI1tz1FRMUPXUdHmLjJ5XDlAn4mtgkitiaZ5DYq56wXKECYrHy1GWk7KPrMLa0y7_nKc7aPywhnkh6beKzPX4qZLyGNT8zw1AAhrEE88Ac9-Eg8f3-k6dlW5aVAr0T3rDs__grfgDsHMCk6TEJggcfdIAH97qg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Empaques</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="Modern living space" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3qGNNtcT360E1gFgc3RblrM-4UEIUygwybxuO0PQdwjDrczIKg5vLusvdNAT7hK1mWOG4hJy4Qvp25vdZK0CcWXRePMnZArsdDKZozdawqmg7xHDlm--GY_PEWa7-CKdOGH_PqUcmX_-OpWq0MKDkydLejsoL4ZLLF50SjzTow5F_euvGmpwp9PWcBN3t3vrqGURJ8645ohpRZ9xw-6CeSAWpo1zlnBhrUb62VC66LS_nKyk7V-BvuYhJjdQ9Yd_DqU8OI1K5IE3iXg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Redes Sociales</p>
+</div>
+</div>
+<!-- Item 7 -->
+<div class="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative">
+<img alt="Fabric textures" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpYJoHKuzz2aNWTWyvPCOkH8Sa1UST3w7Qqkrrj3x3gr5ZXttvQd7QJTsuhnfEDqryOxJ1JrfHqcgk1OCffJ14LCBVBM6bFn1qm5HQUdE5VPw3mjgWfqdxE_Dpwy8D8iSRVPnHGiUx-0iTE8Zk3hxkdwtFO2avau7Uz2edRrwMhFey8lb-2tDf4o9tBpNBVcF_WMTLrDHUdatSAQRCH-hN9bW4-2zahotltTZGYAKcBsGpJmOguxjG7kw49JnHIeDrWcLCM0yHZYpA5Q"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+<p class="text-on-primary font-label-md bg-primary/80 px-3 py-1 rounded backdrop-blur-sm">Papelería</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-primary text-on-primary w-full py-10 px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter max-w-container-max mx-auto items-center">
+<div class="md:col-span-5 flex flex-col justify-center">
+<div>
+<h2 class="font-headline-md text-headline-md text-background mb-4">Tú mereces un espacio ideal...</h2>
+<img alt="Fontinova Expert Logo Blanco" class="h-8 w-auto opacity-90 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBezhAmtc9CImh9Hp5ISJw3bTjMlTzvmQo-6OakOTFuyR2Zo2fB1uRNr5unLO92ZSlgR2PWd_MbFf49M8wslgdFrQtBkOQwx5_MD1-TjY53UvAvnDUawtzp_l9fPml7yMKYppmT_XRtCwgCg70uIDjK2EJREIteyifr2vYm_iHCo5MjMnafgr2nlaKriNPK0OY4sEfl1UqRWozO7YtXh57Y8N6WGKTrdhtlc-J1ZrwusZ4MLqbKpwogze-_KgkH4QffyeMLRvu_UII"/>
+</div>
+<p class="font-body-sm text-body-sm text-surface/80 mt-4">© 2026 Fontinova Expert. Todos los derechos reservados.</p>
+</div>
+<div class="md:col-span-3 md:col-start-7">
+<h4 class="font-label-md text-label-md text-background font-bold mb-3 uppercase tracking-wider">Legal</h4>
+<ul class="space-y-2">
+<li class=""><a class="font-body-sm text-body-sm text-surface/90 hover:text-secondary transition-all focus:ring-2 focus:ring-secondary rounded-sm" href="#">Privacidad</a></li>
+<li class=""><a class="font-body-sm text-body-sm text-surface/90 hover:text-secondary transition-all focus:ring-2 focus:ring-secondary rounded-sm" href="#">Términos de Uso</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-label-md text-label-md text-background font-bold mb-3 uppercase tracking-wider">Contacto</h4>
+<ul class="space-y-2">
+<li class=""><a class="font-body-sm text-body-sm text-surface/90 hover:text-secondary transition-all focus:ring-2 focus:ring-secondary rounded-sm" href="#">Contacto</a></li>
+<li class=""><a class="font-body-sm text-body-sm text-surface/90 hover:text-secondary transition-all focus:ring-2 focus:ring-secondary rounded-sm" href="#">Soporte</a></li>
+</ul>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function reveal() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+            
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body></html>
