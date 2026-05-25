@@ -84,19 +84,41 @@
 <div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
 <img alt="Fontinova Expert Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdThVYpt__Q1G7cvyTtPMw9pxGAEbQkgoXK4dSLNK7yqU2prNIU9h98vgTrbqUU9ifhsx7ZlrKHZjIMx5eBenSaKmt7s210UdgBoK25hh64zsP9bwzxDY_g7DTBfpqshL4ZK6cWnkJ27jhQ7htybNTtLmer5NOGGV7NAuUPbippEcoXW8daSTFOKZp-4HH2qF-F5i8bPmd8Tk1e4ChkBbgyrKh2dbU2NDp2HEp7xloI6vOT_UxHxbODiXMMf7B8sDo8JupdzfRgVs"/>
 </div>
-<div class="hidden md:flex items-center gap-6">
-<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-secondary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#inicio">Inicio</a>
-<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#plataforma">Plataforma de Marca</a>
-<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#identidad-visual">Identidad Visual</a>
-<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#identidad-verbal">Identidad Verbal</a>
-<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70" href="#aplicaciones">Aplicaciones</a>
+<div class="hidden md:flex items-center gap-6 relative py-2" id="nav-links-container">
+<a class="font-label-md text-label-md text-secondary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70 pb-1 font-bold" href="#inicio">Inicio</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70 pb-1" href="#plataforma">Plataforma de Marca</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70 pb-1" href="#identidad-visual">Identidad Visual</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70 pb-1" href="#identidad-verbal">Identidad Verbal</a>
+<a class="font-label-md text-label-md text-primary hover:text-secondary transition-colors duration-200 cursor-pointer active:opacity-70 pb-1" href="#aplicaciones">Aplicaciones</a>
+<div class="absolute bottom-0 h-[2px] bg-secondary transition-all duration-300 ease-out" id="nav-indicator" style="left: 0; width: 0; opacity: 0;"></div>
 </div>
 <button class="hidden md:block bg-secondary text-on-secondary font-label-md text-label-md py-3 px-6 rounded-full hover:bg-primary hover:text-on-primary transition-colors shadow-sm">
                 Descargar Manual
             </button>
-<button class="md:hidden text-primary">
+<button class="md:hidden text-primary" id="menu-toggle-button">
 <span class="material-symbols-outlined text-3xl">menu</span>
 </button>
+<!-- Mobile Menu Drawer -->
+<div class="fixed inset-0 z-[100] bg-background/95 backdrop-blur-lg md:hidden transition-transform duration-300 translate-x-full flex flex-col" id="mobile-menu">
+<div class="flex justify-between items-center h-20 px-gutter border-b border-outline-variant/30 w-full">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<img alt="Fontinova Expert Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdThVYpt__Q1G7cvyTtPMw9pxGAEbQkgoXK4dSLNK7yqU2prNIU9h98vgTrbqUU9ifhsx7ZlrKHZjIMx5eBenSaKmt7s210UdgBoK25hh64zsP9bwzxDY_g7DTBfpqshL4ZK6cWnkJ27jhQ7htybNTtLmer5NOGGV7NAuUPbippEcoXW8daSTFOKZp-4HH2qF-F5i8bPmd8Tk1e4ChkBbgyrKh2dbU2NDp2HEp7xloI6vOT_UxHxbODiXMMf7B8sDo8JupdzfRgVs"/>
+</div>
+<button class="text-primary" id="menu-close-button">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center gap-8 px-gutter">
+<a class="font-headline-md text-headline-md text-primary font-bold hover:text-secondary transition-colors" href="#inicio">Inicio</a>
+<a class="font-headline-md text-headline-md text-primary hover:text-secondary transition-colors" href="#plataforma">Plataforma de Marca</a>
+<a class="font-headline-md text-headline-md text-primary hover:text-secondary transition-colors" href="#identidad-visual">Identidad Visual</a>
+<a class="font-headline-md text-headline-md text-primary hover:text-secondary transition-colors" href="#identidad-verbal">Identidad Verbal</a>
+<a class="font-headline-md text-headline-md text-primary hover:text-secondary transition-colors" href="#aplicaciones">Aplicaciones</a>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md py-4 px-8 rounded-full hover:bg-primary hover:text-on-primary transition-colors shadow-sm mt-8">
+                Descargar Manual
+            </button>
+</div>
+</div>
 </div>
 </nav>
 <!-- HERO SECTION -->
@@ -495,8 +517,81 @@
             });
         }
         
-        window.addEventListener('scroll', reveal);
+        // Navbar Scroll Spy
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav div.hidden a[href^="#"]');
+        const indicator = document.getElementById('nav-indicator');
+        
+        function scrollSpy() {
+            let currentSectionId = '';
+            const scrollPosition = window.scrollY + 120; // 120px offset to trigger as section reaches header
+            
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            
+            if (currentSectionId) {
+                let activeLink = null;
+                navLinks.forEach((link) => {
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('text-secondary', 'font-bold');
+                        link.classList.remove('text-primary');
+                        activeLink = link;
+                    } else {
+                        link.classList.remove('text-secondary', 'font-bold');
+                        link.classList.add('text-primary');
+                    }
+                });
+                
+                if (activeLink) {
+                    indicator.style.left = `${activeLink.offsetLeft}px`;
+                    indicator.style.width = `${activeLink.offsetWidth}px`;
+                    indicator.style.opacity = '1';
+                } else {
+                    indicator.style.opacity = '0';
+                }
+            }
+        }
+        
+        // Mobile Menu Drawer Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggleButton = document.getElementById('menu-toggle-button');
+        const menuCloseButton = document.getElementById('menu-close-button');
+        const mobileLinks = mobileMenu.querySelectorAll('a[href^="#"]');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+        
+        menuToggleButton.addEventListener('click', openMobileMenu);
+        menuCloseButton.addEventListener('click', closeMobileMenu);
+        
+        mobileLinks.forEach((link) => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Event Listeners
+        window.addEventListener('scroll', () => {
+            reveal();
+            scrollSpy();
+        });
+        window.addEventListener('resize', scrollSpy);
+        
         // Trigger once on load
         reveal();
+        scrollSpy();
     </script>
 </body></html>
